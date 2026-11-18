@@ -1,6 +1,4 @@
-; =========================================================================
-; Physics.asm - Trajectory, Orb Drops, Superpowers & Score Tracking
-; =========================================================================
+
 
 LoadLevelMap PROC
     mov esi, OFFSET L1_Bricks
