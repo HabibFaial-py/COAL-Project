@@ -1,6 +1,4 @@
-; =========================================================================
-; RenderGDI.asm - Render Engine (HUD, Per-Level Scores & Orb Rendering)
-; =========================================================================
+
 RenderFrameGDI PROC hwnd:DWORD
     LOCAL ps:PAINTSTRUCT
     LOCAL hdc:DWORD
@@ -67,9 +65,7 @@ RenderFrameGDI PROC hwnd:DWORD
     push memDC
     call SetBkMode@8
 
-    ; =========================================================================
-    ; TITLE MENU (GameState == 0)
-    ; =========================================================================
+
     cmp GameState, 0
     jne DrawGamePage
 
@@ -142,9 +138,7 @@ FormatBest:
 
     jmp BlitBuffer
 
-    ; =========================================================================
-    ; GAMEPLAY PAGE (GameState >= 1)
-    ; =========================================================================
+   
 DrawGamePage:
     push 00FFFFFFh
     push memDC
