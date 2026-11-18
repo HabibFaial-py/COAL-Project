@@ -1,6 +1,4 @@
-; =========================================================================
-; GameVars.inc - Data Architecture, API Imports & Game State Variables
-; =========================================================================
+
 .386
 .model flat, stdcall
 option casemap:none
@@ -37,7 +35,7 @@ EXTERN ShowWindow@8             : PROC
 EXTERN GetTickCount@0           : PROC
 EXTERN wsprintfA                : PROC
 
-; Structures
+
 POINT STRUCT
     x   DWORD 0
     y   DWORD 0
@@ -83,7 +81,6 @@ PAINTSTRUCT STRUCT
     rgbReserved BYTE 32 DUP(0)
 PAINTSTRUCT ENDS
 
-; Constants
 WM_DESTROY          EQU 0002h
 WM_PAINT            EQU 000Fh
 WM_TIMER            EQU 0113h
