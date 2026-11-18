@@ -1,6 +1,4 @@
-; =========================================================================
-; Main.asm - Orchestrator with END GAME Button & State Router
-; =========================================================================
+
 include GameVars.inc
 
 EXTERN UpdateWindow@4 : PROC
