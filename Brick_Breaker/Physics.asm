@@ -46,7 +46,6 @@ ResetGame PROC
 ResetGame ENDP
 
 ApplyPowerUp PROC
-    ; Randomly pick superpower based on system ticks
     call GetTickCount@0
     and eax, 3
 
@@ -55,7 +54,6 @@ ApplyPowerUp PROC
     cmp eax, 1
     je ExtraLifePower
 
-    ; Power-up 3: -10 Seconds Time Bonus
     add TimeDeduction, 10
     ret
 
@@ -78,7 +76,6 @@ UpdatePhysics PROC
     cmp GameState, 1
     jne PhysicsDone
 
-    ; Update Elapsed Time (Applying Time Bonus Deductions)
     call GetTickCount@0
     sub eax, StartTime
     mov ecx, 1000
@@ -95,13 +92,11 @@ ResetTime:
     mov ElapsedTime, 0
 
 ProcessPowerUpDrop:
-    ; Update Power-Up Orb Fall Mechanics
     cmp PowerUpActive, 1
     jne ProcessBall1
 
     add PowerUpY, 3
 
-    ; Check Power-Up Paddle Catch
     mov eax, PowerUpY
     cmp eax, PaddleY
     jl CheckPowerUpFloor
@@ -249,7 +244,6 @@ CheckBricks1:
     add Score, 10
     add PointsSincePowerUp, 10
 
-    ; Spawn Orb when reaching 75 points threshold
     cmp PointsSincePowerUp, 75
     jl ProcessBall2
 
@@ -260,7 +254,7 @@ CheckBricks1:
     mov eax, BallY
     mov PowerUpY, eax
 
-; Secondary Ball Physics Processor
+
 ProcessBall2:
     cmp Ball2InPlay, 0
     je CheckVictoryCondition
@@ -372,7 +366,6 @@ CheckClearLoop:
     cmp eax, 0
     jne PhysicsDone
 
-    ; Save Best Time into Per-Level Array
     mov GameState, 3
 
     mov eax, CurrentLevel
