@@ -46,8 +46,9 @@ ResetGame PROC
 ResetGame ENDP
 
 ApplyPowerUp PROC
-    call GetTickCount@0
-    and eax, 3
+    ; Irvine32 RandomRange: EAX=3 produces values 0, 1, or 2
+    mov eax, 3
+    call RandomRange@0
 
     cmp eax, 0
     je MultiBallPower
