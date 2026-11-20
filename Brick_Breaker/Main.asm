@@ -1,3 +1,4 @@
+INCLUDELIB Irvine32.lib
 
 include GameVars.inc
 
@@ -189,6 +190,9 @@ WndProc ENDP
 WinMain PROC
     LOCAL wc:WNDCLASSEX
     LOCAL msg:MSG
+
+    ; Seed Irvine32 pseudo-random generator once at game startup
+    call Randomize@0
 
     mov wc.cbSize, sizeof WNDCLASSEX
     mov wc.style, 3
