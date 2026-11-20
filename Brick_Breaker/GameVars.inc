@@ -3,7 +3,10 @@
 .model flat, stdcall
 option casemap:none
 
-; Windows API Function Imports
+EXTERN Randomize@0:PROC
+EXTERN RandomRange@0:PROC
+
+
 EXTERN ExitProcess@4            : PROC
 EXTERN RegisterClassExA@4       : PROC
 EXTERN CreateWindowExA@48       : PROC
@@ -121,11 +124,12 @@ hwndBtnLevel DWORD ?
 hwndBtnEnd   DWORD ?
 
 .data
+
 ; Game State Flags: 0 = Title Screen, 1 = Gameplay, 2 = Game Over, 3 = Level Victory
 GameState    DWORD 0
 CurrentLevel DWORD 1
 
-; Primary Ball State
+
 BallX        DWORD 390
 BallY        DWORD 480
 BallRadius   DWORD 10
@@ -133,37 +137,37 @@ VelX         DWORD 4
 VelY         DWORD -4
 BallInPlay   DWORD 0
 
-; Secondary Ball State (Power-up 1)
+
 Ball2X       DWORD 0
 Ball2Y       DWORD 0
 Vel2X        DWORD 0
 Vel2Y        DWORD 0
 Ball2InPlay  DWORD 0
 
-; Paddle State
+
 PaddleX      DWORD 330
 PaddleY      DWORD 520
 PaddleW      DWORD 140
 PaddleH      DWORD 18
 
-; Power-Up Orb State
+
 PowerUpActive DWORD 0
 PowerUpX      DWORD 0
 PowerUpY      DWORD 0
 PowerUpType   DWORD 0 ; 1 = Extra Ball, 2 = +1 Life, 3 = -10 Sec
 PointsSincePowerUp DWORD 0
 
-; Score, Lives & Time Metrics
+
 Score          DWORD 0
 Lives          DWORD 3
 StartTime      DWORD 0
 ElapsedTime    DWORD 0
 TimeDeduction  DWORD 0 ; Total seconds reduced via time powerups
 
-; Individual Best Times Array (Index 0 = L1, Index 1 = L2, Index 2 = L3)
+
 BestTimeArray  DWORD 9999, 9999, 9999
 
-; Text String Buffers
+
 szTitleText    BYTE "BRICK BREAKER x86 MASM", 0
 szSubTitle     BYTE "Press 'START GAME' or SPACEBAR to Begin", 0
 szLevelText    BYTE "SELECTED LEVEL: %d   |   BEST TIME: %d sec", 0
@@ -177,7 +181,7 @@ szVictory      BYTE "LEVEL CLEARED! Time: %d sec", 0
 szVictoryBuffer BYTE 128 DUP(0)
 szLaunchMsg    BYTE "Press SPACEBAR or Click Screen to Launch Ball", 0
 
-; Level Maps
+
 L1_Bricks   BYTE 1,1,1,1,1,1,1,1
             BYTE 2,2,2,2,2,2,2,2
             BYTE 3,3,3,3,3,3,3,3
