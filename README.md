@@ -38,9 +38,9 @@ Built as a Computer Organization and Assembly Language (COAL) project, demonstra
 
 ## Developers
 
-- **Habib Faisal**
-- **Muhammad Arif**
-- **Hafsa Mukarram**
+- **Habib Faisal** - Physics.asm + GUI
+- **Muhammad Arif** - Main.asm + GameVars.inc
+- **Hafsa Mukarram** - Physics.asm + GUI
 
 ---
 
